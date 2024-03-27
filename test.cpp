@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include <cblas.h>
 #include "LlamaModel.hpp"
 
 using namespace std;
