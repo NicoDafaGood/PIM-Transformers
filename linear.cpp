@@ -1,3 +1,4 @@
+#include<cblas.h>
 #include"linear.hpp"
 #include"fp8.hpp"
 using namespace std;
@@ -16,6 +17,7 @@ Linear::~Linear(){
 void Linear:: mul(fp8 *src,fp8 *dst){
     // cerr<<"MUL\n";
     // cout << in_features<<" "<<out_features<<endl;
+    gemv((uint8_t *)mat,out_features,in_features,(uint8_t *)src,(uint8_t *)dst,0);
     // cblas_sgemv(CblasRowMajor,CblasNoTrans,out_features,in_features,1,mat,in_features,src,1,0,dst,1);
 }
 

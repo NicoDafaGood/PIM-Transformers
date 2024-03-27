@@ -1,7 +1,11 @@
 #pragma once
 #include <bits/stdc++.h>
+#include <stdint.h>
 #include "fp8.hpp"
+
 using namespace std;
+
+extern void gemv(uint8_t *matrix, int row, int col, uint8_t *vector, uint8_t *result, int t);
 
 class Linear{
 private:

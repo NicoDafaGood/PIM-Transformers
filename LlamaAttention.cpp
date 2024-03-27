@@ -59,6 +59,7 @@ void Attention_kernel(fp8 *q,fp8 *K[],int n,int head_num,int head_dim,fp8 *dst[]
     {
         
         // cblas_sgemv(CblasRowMajor, CblasNoTrans, n, head_dim, 1.0, K[i], head_dim, q + i*head_dim, 1, 0.0, dst[i], 1);
+        gemv((uint8_t *)K[i],n,head_dim,(uint8_t *)q + i*head_dim,(uint8_t *)dst[i],0);
         for(int j = 0 ;j<n;j++)
             dst[i][j] = dst[i][j]/sqr;
         
@@ -130,6 +131,7 @@ void LlamaAttention::forward(fp8 *src,fp8 *dst)
     {
 
         // cblas_sgemv(CblasColMajor, CblasNoTrans, head_dim, n, 1.0, V[i], head_dim, attn[i], 1, 0.0, temp + i * head_dim, 1);
+        gemv((uint8_t *)V[i],head_dim,n,(uint8_t *)attn[i],(uint8_t *)temp + i * head_dim,1);
 
     }
     o_proj.mul(temp,dst);
