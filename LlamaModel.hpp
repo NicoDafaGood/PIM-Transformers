@@ -1,6 +1,5 @@
 #pragma once
 #include <bits/stdc++.h>
-#include <cblas.h>
 #include"fp8.hpp"
 #include "LlamaDecoderLayer.hpp"
 

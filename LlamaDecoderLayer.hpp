@@ -1,7 +1,5 @@
 #pragma once
 #include <bits/stdc++.h>
-#include <cblas.h>
-// #include "linear.hpp"
 #include "LlamaAttention.hpp"
 #include "LlamaMLP.hpp"
 #include "fp8.hpp"
